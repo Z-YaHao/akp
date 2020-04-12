@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "AKNetWork.h"
-#import "MJRefresh.h"
+#import "MJRefresh/MJRefresh/MJRefresh.h"
 #import "SVProgressHUD.h"
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -74,7 +74,9 @@
         if (ishead) {
             self.dataArr = [result[@"data"][@"items"] mutableCopy];
             [weakself.akTab reloadData];
+            
             [weakself.akTab.mj_header endRefreshing];
+            [weakself.akTab.mj_footer endRefreshing];
         }
         else{
             NSArray *darr = result[@"data"][@"items"];
